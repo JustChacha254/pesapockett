@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PesaPocket - Smart Finance & HR for African SMEs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pesapocket-green: #2A613C;
+            --pesapocket-yellow: #F2A900;
+            --pesapocket-black: #000000;
+            --jemhr-primary-blue: #0062FF; /* Approximation of JemHR's blue */
+            --jemhr-primary-text: #1E293B; /* Dark gray for text */
+            --jemhr-secondary-text: #475569; /* Lighter gray for text */
+            --jemhr-background-light: #F8FAFC; /* Very light gray bg */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--jemhr-primary-text);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .bg-pesapocket-green { background-color: var(--pesapocket-green); }
+        .text-pesapocket-green { color: var(--pesapocket-green); }
+        .border-pesapocket-green { border-color: var(--pesapocket-green); }
+
+        .bg-pesapocket-yellow { background-color: var(--pesapocket-yellow); }
+        .text-pesapocket-yellow { color: var(--pesapocket-yellow); }
+
+        .text-pesapocket-black { color: var(--pesapocket-black); }
+        
+        .bg-jemhr-background-light { background-color: var(--jemhr-background-light); }
+
+        .nav-link {
+            @apply text-sm font-medium text-gray-600 hover:text-pesapocket-green transition-colors duration-200;
+        }
+
+        .btn-cta-primary { /* PesaPocket Green for primary actions */
+            @apply inline-block bg-pesapocket-green text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:brightness-90 transition-all duration-300;
+        }
+        .btn-cta-secondary { /* PesaPocket Yellow for secondary actions */
+            @apply inline-block bg-pesapocket-yellow text-pesapocket-black font-semibold px-6 py-3 rounded-lg shadow-md hover:brightness-90 transition-all duration-300;
+        }
+        .btn-outline { /* JemHR style outline button */
+            @apply inline-block bg-transparent text-pesapocket-green border-2 border-pesapocket-green font-semibold px-6 py-3 rounded-lg hover:bg-pesapocket-green hover:text-white transition-all duration-300;
+        }
+        .btn-ai-explain {
+             @apply mt-3 text-sm text-pesapocket-green font-medium hover:text-pesapocket-yellow transition-colors duration-200 py-1;
+        }
+
+
+        .section-heading {
+            @apply text-3xl md:text-4xl font-bold text-pesapocket-black mb-5 text-center;
+        }
+        .section-subheading {
+            @apply text-lg text-gray-600 mb-10 md:mb-12 text-center max-w-2xl mx-auto;
+        }
+
+        .feature-item-card {
+            @apply bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col;
+        }
+        .feature-item-card .icon-container {
+             @apply w-12 h-12 rounded-lg bg-pesapocket-green bg-opacity-10 flex items-center justify-center mb-4;
+        }
+         .feature-item-card .icon-container i {
+            @apply text-2xl text-pesapocket-green;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        .navbar-sticky {
+            @apply sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm transition-all duration-300;
+        }
+        .navbar-transparent {
+             @apply sticky top-0 z-50 bg-transparent transition-all duration-300;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[100] transition-opacity duration-300;
+        }
+        .modal-container {
+            @apply bg-white p-6 md:p-8 rounded-lg shadow-xl max-w-lg w-full mx-4 transform transition-all duration-300 scale-95 opacity-0;
+        }
+        .modal-overlay.active .modal-container {
+            @apply scale-100 opacity-100;
+        }
+        .modal-overlay.active {
+            @apply opacity-100;
+        }
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-left-color: var(--pesapocket-green);
+            animation: spin 1s ease infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar-transparent">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a href="#" aria-label="PesaPocket Home">
+                        <img src="Pesa (2).png" alt="PesaPocket Logo" class="h-10 md:h-12">
+                    </a>
+                </div>
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#how-it-works" class="nav-link">How It Works</a>
+                    <a href="#testimonials" class="nav-link">Testimonials</a>
+                </div>
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="#waitlist" class="btn-cta-primary text-sm px-5 py-2.5">Join Waitlist</a>
+                </div>
+                <div class="lg:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-pesapocket-green focus:outline-none" aria-label="Open mobile menu">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white shadow-lg absolute w-full">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#features" class="block nav-link px-3 py-2 rounded-md text-base">Features</a>
+                <a href="#how-it-works" class="block nav-link px-3 py-2 rounded-md text-base">How It Works</a>
+                <a href="#testimonials" class="block nav-link px-3 py-2 rounded-md text-base">Testimonials</a>
+            </div>
+            <div class="pt-4 pb-3 border-t border-gray-200">
+                <div class="px-5">
+                    <a href="#waitlist" class="block w-full text-center btn-cta-primary">Join Waitlist</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <main>
+        <section class="relative pt-24 pb-16 md:pt-32 md:pb-24 bg-jemhr-background-light overflow-hidden">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="text-center lg:text-left">
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-pesapocket-black mb-6">
+                            Empowering African SMEs: <span class="text-pesapocket-yellow">Simple Finance & HR</span> Automation.
+                        </h1>
+                        <p class="text-lg md:text-xl text-gray-600 mb-10 max-w-xl mx-auto lg:mx-0">
+                            PesaPocket streamlines your petty cash, expenses, leave, and more. Our WhatsApp bot keeps your deskless team connected. Currently in Beta – be the first to experience the future!
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                            <a href="#waitlist" class="btn-cta-primary text-lg px-8 py-3">Join Our Waitlist</a>
+                            <a href="#features" class="btn-outline text-lg px-8 py-3">Explore Features</a>
+                        </div>
+                         <p class="mt-6 text-sm text-gray-500 text-center lg:text-left">Get early access and exclusive updates.</p>
+                    </div>
+                    <div class="relative">
+                        <img src="https://placehold.co/600x450/2A613C/FFFFFF?text=PesaPocket+Dashboard+Mockup" alt="PesaPocket Platform Mockup" class="rounded-xl shadow-2xl mx-auto">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <header class="text-center mb-12 md:mb-16">
+                    <h2 class="section-heading">All-In-One Solutions for Your Growing Business</h2>
+                    <p class="section-subheading">Focus on growth, let PesaPocket handle the complexities of your daily finance and HR tasks.</p>
+                </header>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="feature-item-card" data-feature-name="Petty Cash Management" data-feature-description="Effortlessly track and manage petty cash disbursements and reconciliations in real-time.">
+                        <div class="icon-container"><i class="fas fa-wallet"></i></div>
+                        <h3 class="text-xl font-semibold text-pesapocket-black mb-2">Petty Cash Management</h3>
+                        <p class="text-gray-600 text-sm flex-grow">Effortlessly track and manage petty cash disbursements and reconciliations in real-time.</p>
+                        <button class="btn-ai-explain">✨ Explain with AI</button>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div class="feature-item-card" data-feature-name="Expense Tracking" data-feature-description="Capture receipts, categorize expenses, and gain clear insights into your spending.">
+                        <div class="icon-container"><i class="fas fa-receipt"></i></div>
+                        <h3 class="text-xl font-semibold text-pesapocket-black mb-2">Expense Tracking</h3>
+                        <p class="text-gray-600 text-sm flex-grow">Capture receipts, categorize expenses, and gain clear insights into your spending.</p>
+                        <button class="btn-ai-explain">✨ Explain with AI</button>
+                    </div>
+                    <!-- Feature 3 -->
+                    <div class="feature-item-card" data-feature-name="Leave Management" data-feature-description="Simplify leave requests, approvals, and tracking for your entire team.">
+                        <div class="icon-container"><i class="fas fa-calendar-alt"></i></div>
+                        <h3 class="text-xl font-semibold text-pesapocket-black mb-2">Leave Management</h3>
+                        <p class="text-gray-600 text-sm flex-grow">Simplify leave requests, approvals, and tracking for your entire team.</p>
+                        <button class="btn-ai-explain">✨ Explain with AI</button>
+                    </div>
+                    <!-- Feature 4 (Highlighted) -->
+                    <div class="feature-item-card border-2 border-pesapocket-yellow" data-feature-name="WhatsApp-Integrated Bot" data-feature-description="Empower your deskless workers to manage tasks, request leave, and submit expenses via WhatsApp.">
+                         <div class="w-12 h-12 rounded-lg bg-pesapocket-yellow bg-opacity-10 flex items-center justify-center mb-4">
+                            <i class="fab fa-whatsapp text-2xl text-pesapocket-yellow"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-pesapocket-black mb-2">WhatsApp-Integrated Bot</h3>
+                        <p class="text-gray-600 text-sm flex-grow">Empower your deskless workers to manage tasks, request leave, and submit expenses via WhatsApp.</p>
+                        <button class="btn-ai-explain">✨ Explain with AI</button>
+                    </div>
+                </div>
+                 <div class="mt-16 text-center">
+                    <h3 class="text-2xl font-semibold text-pesapocket-black mb-4">Exciting New Features Coming Soon!</h3>
+                    <div class="inline-flex items-center bg-pesapocket-yellow text-pesapocket-black px-6 py-3 rounded-lg shadow-md">
+                        <i class="fas fa-money-bill-wave text-2xl mr-3"></i>
+                        <span class="text-lg font-medium">Salary Advances & More Payroll Solutions!</span>
+                    </div>
+                    <p class="text-gray-600 mt-4 max-w-xl mx-auto">Join our waitlist to be the first to know when these powerful tools launch.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section id="how-it-works" class="py-16 md:py-24 bg-jemhr-background-light">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <header class="text-center mb-12 md:mb-16">
+                    <h2 class="section-heading">Get Started with PesaPocket in Minutes</h2>
+                    <p class="section-subheading">Automating your finance and HR is easier than you think. Our simple three-step process gets you up and running quickly.</p>
+                </header>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center p-6">
+                        <div class="flex items-center justify-center w-16 h-16 rounded-full bg-pesapocket-green text-white text-2xl font-bold mx-auto mb-6 shadow-md">1</div>
+                        <h3 class="text-xl font-semibold text-pesapocket-black mb-3">Sign Up for Beta</h3>
+                        <p class="text-gray-600 text-sm">Join our exclusive waitlist to get early access to the PesaPocket platform and start shaping its future.</p>
+                    </div>
+                    <div class="text-center p-6">
+                        <div class="flex items-center justify-center w-16 h-16 rounded-full bg-pesapocket-green text-white text-2xl font-bold mx-auto mb-6 shadow-md">2</div>
+                        <h3 class="text-xl font-semibold text-pesapocket-black mb-3">Onboard Your Team</h3>
+                        <p class="text-gray-600 text-sm">Easily set up your company profile, add employees, and configure your preferences in a few simple steps.</p>
+                    </div>
+                    <div class="text-center p-6">
+                        <div class="flex items-center justify-center w-16 h-16 rounded-full bg-pesapocket-green text-white text-2xl font-bold mx-auto mb-6 shadow-md">3</div>
+                        <h3 class="text-xl font-semibold text-pesapocket-black mb-3">Automate & Thrive</h3>
+                        <p class="text-gray-600 text-sm">Experience streamlined operations, real-time insights, and more time to focus on your core business growth.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WhatsApp Integration -->
+        <section class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 lg:order-1">
+                        <img src="https://placehold.co/550x450/E6FFFA/2A613C?text=PesaPocket+WhatsApp+UI" alt="PesaPocket WhatsApp Bot Interface" class="rounded-xl shadow-xl mx-auto">
+                    </div>
+                    <div class="order-1 lg:order-2 text-center lg:text-left">
+                        <h2 class="text-3xl md:text-4xl font-bold text-pesapocket-black mb-5">Your Business, Now on WhatsApp!</h2>
+                        <p class="text-lg text-gray-600 mb-6">
+                            PesaPocket’s intelligent WhatsApp bot allows your field teams and deskless workers to interact with HR and finance systems effortlessly. Submit expense claims, check leave balances, or request petty cash directly from their phones – no app download needed!
+                        </p>
+                        <ul class="space-y-3 text-gray-600 mb-8 text-left inline-block">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-pesapocket-green mr-3"></i> Instant access for deskless employees.</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-pesapocket-green mr-3"></i> Simplified requests and approvals.</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-pesapocket-green mr-3"></i> Reduced administrative burden.</li>
+                        </ul>
+                        <div class="mt-6">
+                            <a href="#waitlist" class="btn-cta-secondary">Learn More & Join Waitlist</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-16 md:py-24 bg-jemhr-background-light">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <header class="text-center mb-12 md:mb-16">
+                    <h2 class="section-heading">Hear From Early Adopters</h2>
+                    <p class="section-subheading">Discover how PesaPocket is transforming SME operations in Kenya and beyond.</p>
+                </header>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-xl shadow-lg flex flex-col">
+                        <i class="fas fa-quote-left text-3xl text-pesapocket-yellow mb-4"></i>
+                        <p class="text-gray-600 italic mb-6 flex-grow">"PesaPocket has revolutionized how we manage petty cash. The WhatsApp bot is a game-changer for our field team!"</p>
+                        <div>
+                            <div class="font-semibold text-pesapocket-black">Aisha K.</div>
+                            <div class="text-sm text-gray-500">CEO, Nairobi Creative Solutions</div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg flex flex-col">
+                        <i class="fas fa-quote-left text-3xl text-pesapocket-yellow mb-4"></i>
+                        <p class="text-gray-600 italic mb-6 flex-grow">"Tracking expenses used to be a nightmare. With PesaPocket, it's seamless and gives us great visibility into our spending."</p>
+                        <div>
+                            <div class="font-semibold text-pesapocket-black">Brian M.</div>
+                            <div class="text-sm text-gray-500">Owner, KaziLink Logistics</div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg flex flex-col">
+                         <i class="fas fa-quote-left text-3xl text-pesapocket-yellow mb-4"></i>
+                        <p class="text-gray-600 italic mb-6 flex-grow">"The leave management system is so easy to use. Our employees love it, and it saves our HR so much time. Can't wait for salary advances!"</p>
+                        <div>
+                            <div class="font-semibold text-pesapocket-black">Fatuma H.</div>
+                            <div class="text-sm text-gray-500">HR Manager, Baraka Feeds Ltd.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Waitlist CTA Section -->
+        <section id="waitlist" class="py-16 md:py-24 bg-pesapocket-green text-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-2xl mx-auto text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Be the First to Experience PesaPocket!</h2>
+                    <p class="text-lg text-gray-200 mb-10">
+                        Join our beta program for early access to PesaPocket and help shape the future of SME finance and HR automation in Africa. Get exclusive updates and be part of our growing community.
+                    </p>
+                    <div class="bg-white text-gray-800 p-8 sm:p-10 rounded-xl shadow-2xl">
+                        <form action="#" method="POST" class="space-y-6">
+                            <div>
+                                <label for="waitlist-name" class="sr-only">Full Name</label>
+                                <input type="text" name="waitlist-name" id="waitlist-name" required placeholder="Full Name"
+                                       class="block w-full px-5 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-pesapocket-yellow focus:border-pesapocket-yellow placeholder-gray-400">
+                            </div>
+                            <div>
+                                <label for="waitlist-email" class="sr-only">Email Address</label>
+                                <input type="email" name="waitlist-email" id="waitlist-email" required placeholder="Email Address"
+                                       class="block w-full px-5 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-pesapocket-yellow focus:border-pesapocket-yellow placeholder-gray-400">
+                            </div>
+                            <div>
+                                <label for="waitlist-company" class="sr-only">Company Name</label>
+                                <input type="text" name="waitlist-company" id="waitlist-company" placeholder="Company Name (Optional)"
+                                       class="block w-full px-5 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-pesapocket-yellow focus:border-pesapocket-yellow placeholder-gray-400">
+                            </div>
+                             <div>
+                                <label for="waitlist-role" class="sr-only">Your Role</label>
+                                <input type="text" name="waitlist-role" id="waitlist-role" placeholder="Your Role (Optional)"
+                                       class="block w-full px-5 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-pesapocket-yellow focus:border-pesapocket-yellow placeholder-gray-400">
+                            </div>
+                            <div>
+                                <button type="submit" class="w-full btn-cta-secondary text-lg py-3.5">
+                                    Join Waitlist & Get Early Access
+                                </button>
+                            </div>
+                            <p class="text-xs text-gray-500">
+                                We respect your privacy. By joining, you agree to receive updates about PesaPocket.
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- AI Explanation Modal -->
+    <div id="ai-explanation-modal" class="modal-overlay fixed inset-0 hidden opacity-0">
+        <div class="modal-container bg-white p-6 rounded-lg shadow-xl max-w-lg w-11/12 md:w-full">
+            <div class="flex justify-between items-center mb-4">
+                <h3 id="modal-title" class="text-xl font-semibold text-pesapocket-black">Feature Explanation</h3>
+                <button id="modal-close-button" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div id="modal-content" class="text-gray-700 text-sm min-h-[100px]">
+                <!-- AI content will be loaded here -->
+                 <div id="modal-loading-indicator" class="flex justify-center items-center h-full hidden">
+                    <div class="spinner"></div>
+                    <p class="ml-3 text-gray-600">Generating explanation...</p>
+                </div>
+                <p id="modal-explanation-text"></p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="bg-pesapocket-black text-gray-400">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <img src="Pesa (2).png" alt="PesaPocket Logo" class="h-10 mb-4">
+                    <p class="text-sm">Simplifying Finance & HR for African SMEs.</p>
+                </div>
+                <div>
+                    <h5 class="text-sm font-semibold text-gray-200 uppercase tracking-wider mb-4">Product</h5>
+                    <ul class="space-y-3">
+                        <li><a href="#features" class="hover:text-pesapocket-yellow transition-colors text-sm">Features</a></li>
+                        <li><a href="#how-it-works" class="hover:text-pesapocket-yellow transition-colors text-sm">How It Works</a></li>
+                        <li><a href="#waitlist" class="hover:text-pesapocket-yellow transition-colors text-sm">Join Beta</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-sm font-semibold text-gray-200 uppercase tracking-wider mb-4">Company</h5>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="hover:text-pesapocket-yellow transition-colors text-sm">About Us (Coming Soon)</a></li>
+                        <li><a href="#" class="hover:text-pesapocket-yellow transition-colors text-sm">Blog (Coming Soon)</a></li>
+                        <li><a href="#waitlist" class="hover:text-pesapocket-yellow transition-colors text-sm">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-sm font-semibold text-gray-200 uppercase tracking-wider mb-4">Connect</h5>
+                    <div class="flex space-x-5">
+                        <a href="#" class="hover:text-pesapocket-yellow transition-colors" aria-label="Facebook"><i class="fab fa-facebook-f text-lg"></i></a>
+                        <a href="#" class="hover:text-pesapocket-yellow transition-colors" aria-label="Twitter"><i class="fab fa-twitter text-lg"></i></a>
+                        <a href="#" class="hover:text-pesapocket-yellow transition-colors" aria-label="LinkedIn"><i class="fab fa-linkedin-in text-lg"></i></a>
+                        <a href="#" class="hover:text-pesapocket-yellow transition-colors" aria-label="Instagram"><i class="fab fa-instagram text-lg"></i></a>
+                    </div>
+                     <p class="text-sm mt-4">Nairobi, Kenya.</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center md:text-left">
+                <p class="text-sm">&copy; <span id="current-year"></span> PesaPocket. All rights reserved.</p>
+                <p class="text-xs mt-1">PesaPocket is currently in beta. Features and services are subject to change.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.onscroll = function() {
+            if (navbar) { // Check if navbar element exists
+                if (window.pageYOffset > 50) {
+                    navbar.classList.remove('navbar-transparent');
+                    navbar.classList.add('navbar-sticky');
+                } else {
+                    navbar.classList.remove('navbar-sticky');
+                    navbar.classList.add('navbar-transparent');
+                }
+            }
+        };
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Smooth scroll for anchor links & close mobile menu
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Set current year in footer
+        const currentYearEl = document.getElementById('current-year');
+        if (currentYearEl) {
+            currentYearEl.textContent = new Date().getFullYear();
+        }
+
+        // --- Gemini AI Feature Explanation Logic ---
+        const aiExplainButtons = document.querySelectorAll('.btn-ai-explain');
+        const modalOverlay = document.getElementById('ai-explanation-modal');
+        const modalTitle = document.getElementById('modal-title');
+        // const modalContent = document.getElementById('modal-content'); // Parent div for loading/text - Not directly used for text content
+        const modalExplanationText = document.getElementById('modal-explanation-text');
+        const modalLoadingIndicator = document.getElementById('modal-loading-indicator');
+        const modalCloseButton = document.getElementById('modal-close-button');
+
+        // Function to show the modal
+        function showModal() {
+            if (modalOverlay) {
+                modalOverlay.classList.remove('hidden');
+                setTimeout(() => modalOverlay.classList.add('active'), 10); // For transition
+            }
+        }
+
+        // Function to hide the modal
+        function hideModal() {
+            if (modalOverlay) {
+                modalOverlay.classList.remove('active');
+                setTimeout(() => modalOverlay.classList.add('hidden'), 300); // Match transition duration
+            }
+        }
+        
+        if (modalCloseButton) {
+            modalCloseButton.addEventListener('click', hideModal);
+        }
+        if (modalOverlay) {
+            modalOverlay.addEventListener('click', (event) => {
+                if (event.target === modalOverlay) { // Only close if clicking overlay itself
+                    hideModal();
+                }
+            });
+        }
+
+
+        aiExplainButtons.forEach(button => {
+            button.addEventListener('click', async () => {
+                const featureCard = button.closest('.feature-item-card');
+                const featureName = featureCard.dataset.featureName;
+                // const featureDescription = featureCard.dataset.featureDescription; // We can use this in prompt if needed
+
+                if (!featureName) {
+                    console.error('Feature name not found for AI explanation.');
+                    if (modalExplanationText) modalExplanationText.textContent = 'Could not determine the feature to explain.';
+                    if(modalLoadingIndicator) modalLoadingIndicator.classList.add('hidden');
+                    if(modalTitle) modalTitle.textContent = 'Error';
+                    showModal();
+                    return;
+                }
+
+                if(modalTitle) modalTitle.textContent = `AI Explanation: ${featureName}`;
+                if(modalExplanationText) modalExplanationText.textContent = ''; // Clear previous text
+                if(modalLoadingIndicator) modalLoadingIndicator.classList.remove('hidden');
+                showModal();
+
+                // Construct the prompt for Gemini
+                const prompt = `You are a helpful assistant for PesaPocket, a finance and HR automation tool for African SMEs. Explain the key benefits of "${featureName}" for a small or medium-sized business in Africa. Focus on simplicity, efficiency, and control. Keep the explanation to 2-4 concise sentences, formatted as a single paragraph.`;
+                
+                let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+                const payload = { contents: chatHistory };
+                const apiKey = ""; // For gemini-2.0-flash, Canvas provides the key
+                const apiUrl = \`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=\${apiKey}\`;
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        console.error('Gemini API Error:', errorData);
+                        let apiErrorMessage = 'Unknown API error';
+                        if (errorData && errorData.error && errorData.error.message) {
+                            apiErrorMessage = errorData.error.message;
+                        }
+                        const fullErrorMessage = \`API request failed with status \${response.status}: \${apiErrorMessage}\`;
+                        throw new Error(fullErrorMessage);
+                    }
+
+                    const result = await response.json();
+
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const text = result.candidates[0].content.parts[0].text;
+                        if(modalExplanationText) modalExplanationText.innerHTML = text.replace(/\n/g, '<br>');
+                    } else {
+                        console.error('Unexpected response structure from Gemini API:', result);
+                        if(modalExplanationText) modalExplanationText.textContent = 'Sorry, I could not generate an explanation at this time. The response from the AI was not as expected.';
+                    }
+                } catch (error) {
+                    console.error('Error calling Gemini API:', error);
+                    let displayErrorMessage = 'Sorry, I could not generate an explanation. Please try again later.';
+                    if (error && error.message) {
+                        // To avoid overly long messages, just use the core error.message if available
+                        displayErrorMessage = 'Sorry, I could not generate an explanation: ' + error.message;
+                    }
+                    if(modalExplanationText) modalExplanationText.textContent = displayErrorMessage;
+                } finally {
+                    if(modalLoadingIndicator) modalLoadingIndicator.classList.add('hidden');
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
