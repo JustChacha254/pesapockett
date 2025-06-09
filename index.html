@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PesaPocket - Smart Finance & HR for African SMEs</title>
+    <link rel="icon" href="Pesa (1).png" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -34,7 +35,6 @@
             color: var(--jemhr-primary-text);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            /* overflow-x: hidden; Applied by Tailwind's default */
         }
 
         .bg-pesapocket-green { background-color: var(--pesapocket-green); }
@@ -128,253 +128,374 @@
             100% { transform: rotate(360deg); }
         }
         
-        /* === START OF IMPORTED/ADAPTED CSS FOR CLAUDE.AI WHATSAPP MOCKUPS === */
-        .claude-hero-mockup-outer-frame { 
-            background: #1f2937; 
-            border-radius: 30px; 
-            padding: 8px; 
-            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
-            max-width: 350px;
-            margin: 0 auto; 
+        /* === START OF GEMINI SALARY ADVANCE MOCKUP CSS === */
+        .gemini-card-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
         }
-        .claude-hero-mockup-screen { 
-            background: var(--whatsapp-header-bg-claude); 
-            border-radius: 22px; 
-            overflow: hidden;
-        }
-        .claude-hero-mockup-header { 
-            background: var(--whatsapp-header-bg-claude); 
-            padding: 15px 20px; 
-            display: flex; 
-            align-items: center; 
-            gap: 12px; 
-            color: white;
-        }
-        .claude-hero-mockup-header .online-dot {
-            width: 12px; height: 12px; background: var(--whatsapp-online-dot-claude); border-radius: 50%;
-        }
-        .claude-hero-mockup-header .bot-name { font-weight: 600; font-size: 16px; }
-        .claude-hero-mockup-header .status { font-size: 12px; opacity: 0.8; }
-        .claude-hero-mockup-header .options-icon { font-size: 18px; }
 
-        .claude-hero-mockup-chat-area { 
-            background-color: var(--whatsapp-bg-pattern-claude);
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3Cpattern id='chat-bg-claude' x='0' y='0' width='20' height='20' patternUnits='userSpaceOnUse'%3E%3Ccircle cx='10' cy='10' r='0.5' fill='%23ffffff' opacity='0.1'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100' height='100' fill='url(%23chat-bg-claude)'/%3E%3C/svg%3E");
-            padding: 20px; 
-            min-height: 400px; 
-            display: flex; 
-            flex-direction: column; 
-            gap: 15px;
+        @media (min-width: 768px) {
+            .gemini-card-grid {
+                grid-template-columns: 1fr 1fr;
+            }
         }
-        .claude-chat-message { 
-            padding: 12px 16px;
-            border-radius: 18px;
-            max-width: 80%;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-            color: #333; 
-            font-size: 14px; 
-            line-height: 1.4;
+        
+        .gemini-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
-        .claude-chat-message-bot {
-            background: var(--whatsapp-chat-bg-bot-claude);
-            align-self: flex-start;
-            border-bottom-left-radius: 4px;
-        }
-        .claude-chat-message-user {
-            background: var(--whatsapp-chat-bg-user-claude);
-            align-self: flex-end;
-            border-bottom-right-radius: 4px;
-        }
-        .claude-chat-message-time {
-            margin-top: 8px; font-size: 13px; color: #666; display: block;
-        }
-        .claude-chat-message-user .claude-chat-message-time { text-align: right; }
-        .claude-chat-bot-options-container .claude-bot-option {
-            background: var(--whatsapp-bot-option-bg-claude); 
-            padding: 8px 12px; 
-            border-radius: 12px; 
-            border-left: 3px solid var(--whatsapp-bot-option-border-claude);
-            margin-bottom: 8px; 
-        }
-        .claude-chat-typing-indicator {
-            background: var(--whatsapp-chat-bg-bot-claude); 
-            padding: 12px 16px; 
-            border-radius: 18px 18px 18px 4px; 
-            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-            display: inline-flex; 
-            gap: 4px; 
-            align-items: center;
-            align-self: flex-start;
-        }
-        @keyframes typing-pulse { 
-            0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
-            30% { transform: translateY(-3px); opacity: 1; }
-        }
-        .claude-chat-typing-indicator span {
-            width: 8px; height: 8px; background: #ccc; border-radius: 50%;
-            animation: typing-pulse 1.4s infinite ease-in-out; 
-        }
-        .claude-chat-typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
-        .claude-chat-typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
 
-        .claude-hero-mockup-input-area { 
-            background: var(--whatsapp-input-bg-claude); 
-            padding: 10px 15px; 
-            display: flex; 
-            align-items: center; 
-            gap: 10px;
+        .gemini-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
-        .claude-hero-mockup-input-field {
-            flex: 1; background: white; border-radius: 20px; padding: 8px 15px; font-size: 14px; color: #666;
+
+        .gemini-card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 1.5rem;
         }
-         .claude-hero-mockup-send-button {
-            width: 35px; height: 35px; background: var(--whatsapp-send-button-bg-claude); border-radius: 50%; 
-            display: flex; align-items: center; justify-content: center; color: white; font-size: 16px;
+
+        .gemini-balance-section {
+            text-align: center;
+            padding: 1.5rem;
+            background: #f7fafc;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .gemini-balance-label {
+            font-size: 0.875rem;
+            color: #718096;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .gemini-balance-amount {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .gemini-balance-subtitle {
+            font-size: 0.875rem;
+            color: #a0aec0;
+        }
+
+        .gemini-form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .gemini-form-label {
+            display: block;
+            font-weight: 600;
+            color: #4a5568;
+            margin-bottom: 0.5rem;
+        }
+
+        .gemini-slider-container {
+            position: relative;
+            margin: 1rem 0;
+        }
+
+        .gemini-amount-display {
+            text-align: center;
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--pesapocket-green);
+            margin-bottom: 1rem;
+        }
+
+        .gemini-slider {
+            width: 100%;
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 3px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .gemini-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--pesapocket-green);
+            border-radius: 50%;
             cursor: pointer;
         }
-        .claude-whatsapp-section-mockup-frame {
-            max-width: 320px; margin: 0 auto;
-            background: rgba(255,255,255,0.1); 
-            border-radius: 20px; 
-            padding: 20px; 
-            backdrop-filter: blur(10px);
-        }
-        .claude-whatsapp-section-mockup-header {
-             display: flex; align-items: center; gap: 12px; margin-bottom: 20px; color: white;
-        }
-        .claude-whatsapp-section-mockup-header .avatar {
-            width: 40px; height: 40px; background: var(--pesapocket-green); border-radius: 50%; 
-            display: flex; align-items: center; justify-content: center; font-weight: bold;
-        }
-        .claude-whatsapp-section-mockup-header .bot-name { font-weight: 600; }
-        .claude-whatsapp-section-mockup-header .account-type { font-size: 12px; opacity: 0.8; }
 
-        .claude-whatsapp-section-mockup-messages .message-card {
-            background: rgba(255,255,255,0.2); padding: 12px; border-radius: 12px; margin-bottom: 12px;
-        }
-         .claude-whatsapp-section-mockup-messages .message-card .title { font-size: 14px; margin-bottom: 8px; font-weight: bold; }
-         .claude-whatsapp-section-mockup-messages .message-card .details { font-size: 12px; opacity: 0.9; line-height: 1.5; }
-        
-        .claude-whatsapp-section-mockup-quick-actions {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 16px;
-        }
-        .claude-whatsapp-section-mockup-quick-actions button {
-            background: rgba(255,255,255,0.2); padding: 8px; border-radius: 8px; 
-            text-align: center; font-size: 12px; color: white; border: none; cursor: pointer;
-        }
-         .claude-whatsapp-section-mockup-quick-actions button:hover { background: rgba(255,255,255,0.3); }
-        /* === END OF IMPORTED/ADAPTED CSS FOR CLAUDE.AI WHATSAPP MOCKUPS === */
-        
-        /* === START OF CSS FOR CLAUDE.AI SALARY ADVANCE MOCKUP === */
-        /* Scope the * reset for this specific mockup to avoid global conflicts */
-        .claude-salary-advance-phone-container * {
-             margin: 0;
-             padding: 0;
-             box-sizing: border-box;
-        }
-        .claude-salary-advance-phone-container {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* Specific font for this mockup */
-            width: 375px; /* Default width */
-            max-width: 100%; /* Ensure it shrinks on smaller screens if needed */
-            height: auto; /* Allow height to adjust based on content */
-            min-height: 700px; /* Minimum height to look like a phone */
-            background: #ffffff;
-            border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* Softer shadow */
-            overflow: hidden;
-            position: relative;
-            color: #333; /* Default text color for this mockup */
-            line-height: 1.6;
+        .gemini-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: var(--pesapocket-green);
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
         }
 
-        .claude-salary-advance-status-bar {
+        .gemini-fee-breakdown {
+            background: #f7fafc;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .gemini-fee-row {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 12px 20px;
-            font-size: 14px;
-            font-weight: 600;
-            background: #ffffff;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
         }
-        .claude-salary-advance-time { color: #333; }
-        .claude-salary-advance-indicators { display: flex; align-items: center; gap: 5px; color: #333;}
 
-        .claude-salary-advance-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px 20px; /* Adjusted padding */
-            background: #ffffff;
-            border-bottom: 1px solid #f0f0f0;
+        .gemini-fee-row:last-child {
+            margin-bottom: 0;
+            font-weight: bold;
+            font-size: 1rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #e2e8f0;
         }
-        .claude-salary-advance-back-btn { font-size: 20px; color: #333; cursor: pointer; }
-        .claude-salary-advance-logo-container { display: flex; align-items: center; gap: 8px; }
-        .claude-salary-advance-logo-svg { width: auto; height: 28px; /* Adjusted for better scaling */ }
-        .claude-salary-advance-waitlist-badge {
-            background: linear-gradient(45deg, #FFA726, #FF9800);
+
+        .gemini-btn-primary {
+            background: linear-gradient(135deg, var(--pesapocket-green), var(--pesapocket-green-cta-end));
             color: white;
-            padding: 3px 7px; /* Adjusted padding */
-            border-radius: 10px; /* Adjusted radius */
-            font-size: 9px; /* Adjusted font size */
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
             font-weight: 600;
-            margin-left: 8px;
-            animation: claude-pulse 2s infinite;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
         }
-         @keyframes claude-pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
 
-        .claude-salary-advance-profile-icon {
-            width: 32px; height: 32px;
-            background: linear-gradient(45deg, #4CAF50, #2E7D32);
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            color: white; font-size: 14px;
+        .gemini-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(42, 97, 60, 0.4);
         }
-        .claude-salary-advance-date { text-align: center; padding: 12px 15px; color: #666; font-size: 15px; background: #f8f9fa;}
-        .claude-salary-advance-salary-info {
-            background: linear-gradient(135deg, #4CAF50, #2E7D32);
-            margin: 15px; padding: 20px; border-radius: 16px; color: white;
+        
+        .gemini-whatsapp-highlight {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 1.5rem;
         }
-        .claude-salary-advance-salary-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-        .claude-salary-advance-salary-item:last-child { margin-bottom: 0; }
-        .claude-salary-advance-salary-label { font-size: 13px; opacity: 0.9; }
-        .claude-salary-advance-salary-value { font-size: 15px; font-weight: 600; }
-        .claude-salary-advance-stars { color: #FFA726; font-size: 11px; }
-        .claude-salary-advance-advance-section { padding: 0 15px; }
-        .claude-salary-advance-question { text-align: center; color: #666; font-size: 15px; margin-bottom: 15px; }
-        .claude-salary-advance-amount-display { text-align: center; margin-bottom: 25px; }
-        .claude-salary-advance-currency { font-size: 22px; color: #2E7D32; font-weight: 700; }
-        .claude-salary-advance-amount { font-size: 34px; color: #2E7D32; font-weight: 700; margin-left: 5px; }
-        .claude-salary-advance-slider-container { margin: 15px 0; position: relative; height: 35px; display: flex; align-items: center; }
-        .claude-salary-advance-slider { width: 100%; height: 6px; border-radius: 3px; background: #e0e0e0; outline: none; -webkit-appearance: none; position: relative; z-index: 2; }
-        .claude-salary-advance-slider::-webkit-slider-thumb { appearance: none; width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(45deg, #4CAF50, #2E7D32); cursor: pointer; box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3); position: relative; z-index: 3; }
-        .claude-salary-advance-slider::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(45deg, #4CAF50, #2E7D32); cursor: pointer; box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3); border: none; }
-        .claude-salary-advance-progress-bar { position: absolute; top: 50%; left: 0; transform: translateY(-50%); height: 6px; background: linear-gradient(90deg, #4CAF50, #2E7D32); border-radius: 3px; transition: width 0.1s ease; z-index: 1; pointer-events: none; }
-        .claude-salary-advance-slider-labels { display: flex; justify-content: space-between; margin-top: 10px; font-size: 11px; color: #999; position: absolute; width: 100%; bottom: -18px; }
-        .claude-salary-advance-breakdown { background: #f8f9fa; padding: 15px; margin: 15px; border-radius: 12px; }
-        .claude-salary-advance-breakdown-item { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 13px; }
-        .claude-salary-advance-breakdown-item:last-child { margin-bottom: 0; padding-top: 10px; border-top: 1px solid #e0e0e0; font-weight: 600; color: #2E7D32; }
-        .claude-salary-advance-breakdown-label { color: #666; }
-        .claude-salary-advance-breakdown-value { color: #333; font-weight: 500; }
-        .claude-salary-advance-withdrawal-section { padding: 0 15px; margin-top:15px; }
-        .claude-salary-advance-section-title { font-size: 15px; color: #333; margin-bottom: 12px; }
-        .claude-salary-advance-account-select { width: 100%; padding: 12px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 13px; color: #666; background: white; margin-bottom: 15px; }
-        .claude-salary-advance-terms-container { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 20px; }
-        .claude-salary-advance-checkbox { width: 16px; height: 16px; border: 2px solid #4CAF50; border-radius: 3px; cursor: pointer; flex-shrink: 0; margin-top: 2px; }
-        .claude-salary-advance-checkbox.checked { background: #4CAF50; position: relative; }
-        .claude-salary-advance-checkbox.checked::after { content: '✓'; color: white; font-size: 10px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
-        .claude-salary-advance-terms-text { font-size: 11px; color: #666; line-height: 1.4; }
-        .claude-salary-advance-terms-link { color: #4CAF50; text-decoration: none; }
-        .claude-salary-advance-cta-button { width: 100%; padding: 14px; background: linear-gradient(135deg, #4CAF50, #2E7D32); color: white; border: none; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; margin-bottom: 15px; transition: all 0.3s ease; }
-        .claude-salary-advance-cta-button:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3); }
-        .claude-salary-advance-cta-button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none; }
-        .claude-salary-advance-bottom-nav { position: absolute; bottom: 0; left: 0; right: 0; display: flex; background: white; border-top: 1px solid #f0f0f0; }
-        .claude-salary-advance-nav-item { flex: 1; padding: 12px; text-align: center; font-size: 13px; color: #999; cursor: pointer; transition: color 0.3s ease; }
-        .claude-salary-advance-nav-item.active { color: #4CAF50; font-weight: 600; }
 
-        /* === END OF CSS FOR CLAUDE.AI SALARY ADVANCE MOCKUP === */
+        .gemini-whatsapp-highlight strong {
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .gemini-success-state {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .gemini-success-icon {
+            width: 60px;
+            height: 60px;
+            background: #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .gemini-success-title {
+            color: #10b981;
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .gemini-success-message {
+            color: #718096;
+            font-size: 0.875rem;
+        }
+        /* === END OF GEMINI SALARY ADVANCE MOCKUP CSS === */
+
+        /* === START OF INTERACTIVE WHATSAPP DEMO CSS === */
+        .interactive-phone-mockup {
+            position: relative;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+        .interactive-phone-frame {
+            background: #1f2937;
+            border-radius: 25px;
+            padding: 8px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .interactive-phone-screen {
+            background: var(--whatsapp-header-bg-claude);
+            border-radius: 18px;
+            height: 450px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .interactive-whatsapp-header {
+            background: var(--whatsapp-header-bg-claude);
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            color: white;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+        }
+        .interactive-bot-avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--whatsapp-send-button-bg-claude);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .interactive-bot-info h4 {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        .interactive-bot-info p {
+            margin: 0;
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+        .interactive-chat-area {
+            flex-grow: 1;
+            background: var(--whatsapp-bg-pattern-claude);
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .interactive-message {
+            max-width: 80%;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            position: relative;
+            animation: slideIn 0.5s ease-out forwards;
+        }
+        .interactive-message.bot {
+            background: white;
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        .interactive-message.user {
+            background: var(--whatsapp-chat-bg-user-claude);
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        .interactive-message-time {
+            font-size: 0.7rem;
+            color: #667781;
+            margin-top: 2px;
+            text-align: right;
+        }
+        .interactive-typing-indicator {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            background: white;
+            border-radius: 8px;
+            border-bottom-left-radius: 2px;
+            max-width: 80px;
+            align-self: flex-start;
+            animation: slideIn 0.5s ease-out forwards;
+        }
+        .interactive-typing-dots {
+            display: flex;
+            gap: 4px;
+        }
+        .interactive-typing-dot {
+            width: 8px;
+            height: 8px;
+            background: #667781;
+            border-radius: 50%;
+            animation: typingDot 1.5s infinite;
+        }
+        .interactive-typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .interactive-typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes typingDot {
+            0%, 60%, 100% { transform: scale(1); opacity: 0.5; }
+            30% { transform: scale(1.2); opacity: 1; }
+        }
+        .interactive-quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        .interactive-quick-reply {
+            background: var(--whatsapp-bot-option-bg-claude);
+            border: 1px solid var(--whatsapp-bot-option-border-claude);
+            color: var(--pesapocket-green);
+            border-radius: 20px;
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .interactive-quick-reply:hover {
+            background-color: #dcf8c6;
+        }
+        /* === END OF INTERACTIVE WHATSAPP DEMO CSS === */
+
+
+        /* Custom Message Box */
+        #custom-message-box {
+            position: fixed;
+            top: -100px; /* Start off-screen */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--pesapocket-green);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 200;
+            transition: top 0.5s ease-in-out;
+            font-size: 14px;
+        }
+        #custom-message-box.show {
+            top: 20px;
+        }
 
     </style>
 </head>
 <body class="bg-white">
+
+    <!-- Custom Message Box -->
+    <div id="custom-message-box"></div>
 
     <!-- Navigation -->
     <nav id="navbar" class="navbar-transparent">
@@ -382,7 +503,7 @@
             <div class="flex items-center justify-between h-20">
                 <div class="flex-shrink-0">
                     <a href="#" aria-label="PesaPocket Home">
-                        <img src="Pesa (2).png" alt="PesaPocket Logo" class="h-10 md:h-12">
+                        <img src="Pesa (1).png" alt="PesaPocket Logo" class="h-10 md:h-12">
                     </a>
                 </div>
                 <div class="hidden lg:flex items-center space-x-8">
@@ -409,7 +530,7 @@
             </div>
             <div class="pt-4 pb-3 border-t border-gray-200">
                 <div class="px-5">
-                     <a href="#waitlist" class="block w-full text-center pesapocket-gradient-button font-semibold px-7 py-3.5 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300 text-base">Join Waitlist</a>
+                   <a href="#waitlist" class="block w-full text-center pesapocket-gradient-button font-semibold px-7 py-3.5 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300 text-base">Join Waitlist</a>
                 </div>
             </div>
         </div>
@@ -431,49 +552,23 @@
                             <a href="#waitlist" class="inline-block font-semibold px-7 py-3.5 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300 text-lg pesapocket-gradient-button">Get Early Access</a>
                             <a href="#features" class="inline-block font-semibold px-7 py-3.5 rounded-full hover:shadow-lg transform hover:scale-105 transition-all duration-300 text-lg pesapocket-outline-button">Learn More</a>
                         </div>
-                         <p class="mt-6 text-sm text-gray-500 text-center lg:text-left">Get early access and exclusive updates.</p>
+                       <p class="mt-6 text-sm text-gray-500 text-center lg:text-left">Get early access and exclusive updates.</p>
                     </div>
                     <div class="relative lg:pl-10">
-                        <!-- WhatsApp Mockup from Claude.ai, adapted -->
-                        <div class="claude-hero-mockup-outer-frame">
-                            <div class="claude-hero-mockup-screen">
-                                <div class="claude-hero-mockup-header">
-                                    <div class="online-dot"></div> 
-                                    <div class="flex-1">
-                                        <div class="bot-name">PesaPocket Bot</div>
-                                        <div class="status">Online</div>
-                                    </div>
-                                    <div class="options-icon">⋮</div>
-                                </div>
-                                <div class="claude-hero-mockup-chat-area">
-                                    <div class="claude-chat-message claude-chat-message-bot">
-                                        <p>👋 Welcome to PesaPocket!<br><br> I'm here to help you with:</p>
-                                        <div class="claude-chat-bot-options-container mt-2">
-                                            <div class="claude-bot-option">💰 Check petty cash balance</div>
-                                            <div class="claude-bot-option">📄 Submit expense report</div>
-                                            <div class="claude-bot-option">🏖️ Request leave</div>
+                        <!-- Interactive Hero WhatsApp Mockup -->
+                        <div class="interactive-phone-mockup">
+                            <div class="interactive-phone-frame">
+                                <div class="interactive-phone-screen">
+                                    <div class="interactive-whatsapp-header">
+                                        <div class="interactive-bot-avatar"><i class="fab fa-whatsapp"></i></div>
+                                        <div class="interactive-bot-info">
+                                            <h4>PesaPocket Bot</h4>
+                                            <p>Online</p>
                                         </div>
-                                        <span class="claude-chat-message-time">9:30 AM</span>
                                     </div>
-                                    <div class="claude-chat-message claude-chat-message-user">
-                                        <p>Check petty cash balance</p>
-                                        <span class="claude-chat-message-time">9:31 AM ✓✓</span>
+                                    <div class="interactive-chat-area" id="heroChatArea">
+                                        <!-- Initial messages will be populated by JS -->
                                     </div>
-                                    <div class="claude-chat-message claude-chat-message-bot">
-                                        <p>💰 <strong>Petty Cash Balance</strong><br><br>
-                                            Available: <span style="color: var(--pesapocket-green); font-weight: 600;">KSh 15,750</span><br>
-                                            Pending: KSh 2,500<br>
-                                            Total Allocated: KSh 20,000
-                                        </p>
-                                        <span class="claude-chat-message-time">9:31 AM</span>
-                                    </div>
-                                    <div class="claude-chat-typing-indicator">
-                                        <span></span><span></span><span></span>
-                                    </div>
-                                </div>
-                                <div class="claude-hero-mockup-input-area">
-                                    <div class="claude-hero-mockup-input-field">Type a message...</div>
-                                    <div class="claude-hero-mockup-send-button">➤</div>
                                 </div>
                             </div>
                         </div>
@@ -517,113 +612,70 @@
                         <button class="btn-ai-explain">✨ Explain with AI</button>
                     </div>
                 </div>
-                <!-- Updated "Coming Soon" section with Claude.ai Salary Advance Mockup -->
+                <!-- Updated "Coming Soon" section with Gemini Salary Advance Mockup -->
                  <div class="mt-16 md:mt-24 text-center">
                     <h3 class="text-2xl md:text-3xl font-semibold text-pesapocket-black mb-6">Exciting New Features Coming Soon!</h3>
-                    <div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-12">
-                        <!-- START: Claude.ai Salary Advance Mockup Integration -->
-                        <div class="claude-salary-advance-phone-container">
-                            <div class="claude-salary-advance-status-bar">
-                                <div class="claude-salary-advance-time">19:01</div>
-                                <div class="claude-salary-advance-indicators">📶 📶   40%</div>
-                            </div>
-                    
-                            <div class="claude-salary-advance-header">
-                                <div class="claude-salary-advance-back-btn">←</div>
-                                <div class="claude-salary-advance-logo-container">
-                                    <svg class="claude-salary-advance-logo-svg" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg" style="height: 28px; width:auto;">
-                                        <rect x="0" y="5" width="30" height="30" rx="8" fill="#4CAF50"/>
-                                        <path d="M8 15 L20 15 L18 12 L25 18 L18 24 L20 21 L8 21 Q5 21 5 18 Q5 15 8 15 Z" fill="#FFA726"/>
-                                        <text x="38" y="18" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333333">Pesa</text>
-                                        <text x="38" y="32" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#4CAF50">Pocket</text>
-                                    </svg>
-                                    <div class="claude-salary-advance-waitlist-badge">BETA</div>
-                                </div>
-                                <div class="claude-salary-advance-profile-icon">👤</div>
-                            </div>
-                    
-                            <div class="claude-salary-advance-date">05 Jun 2025</div>
-                    
-                            <div class="claude-salary-advance-salary-info">
-                                <div class="claude-salary-advance-salary-item">
-                                    <div class="claude-salary-advance-salary-label">• Net Salary <span class="claude-salary-advance-stars">*******</span></div>
-                                    <div class="claude-salary-advance-salary-value">👁</div>
-                                </div>
-                                <div class="claude-salary-advance-salary-item">
-                                    <div class="claude-salary-advance-salary-label">• Net Salary (Per Day)</div>
-                                    <div class="claude-salary-advance-salary-value">1,200</div>
-                                </div>
-                                <div class="claude-salary-advance-salary-item">
-                                    <div class="claude-salary-advance-salary-label">• Eligible Advance (18 Days)</div>
-                                    <div class="claude-salary-advance-salary-value">21,600</div>
-                                </div>
-                            </div>
-                    
-                            <div class="claude-salary-advance-advance-section">
-                                <div class="claude-salary-advance-question">How much do you need today?</div>
-                                <div class="claude-salary-advance-amount-display">
-                                    <span class="claude-salary-advance-currency">KSH</span>
-                                    <span class="claude-salary-advance-amount" id="claudeSelectedAmount">15,000</span>
-                                </div>
-                                <div class="claude-salary-advance-slider-container">
-                                    <div class="claude-salary-advance-progress-bar" id="claudeProgressBar" style="width: 69.44%;"></div>
-                                    <input type="range" min="1000" max="21600" value="15000" class="claude-salary-advance-slider" id="claudeAmountSlider">
-                                    <div class="claude-salary-advance-slider-labels">
-                                        <span>Day 1</span>
-                                        <span>Day 18</span>
+                     <div class="w-full max-w-4xl mx-auto">
+                        <div class="gemini-card-grid">
+                            <!-- Advance Request Card -->
+                            <div class="gemini-card">
+                                <div id="gemini-request-form">
+                                    <h3 class="gemini-card-title">Salary Advance</h3>
+                                    
+                                    <div class="gemini-balance-section">
+                                        <div class="gemini-balance-label">Available for Advance</div>
+                                        <div class="gemini-balance-amount">KSh <span id="availableBalance">15,750</span></div>
+                                        <div class="gemini-balance-subtitle">Based on your earned salary this month</div>
                                     </div>
-                                </div>
-                            </div>
-                    
-                            <div class="claude-salary-advance-breakdown">
-                                <div class="claude-salary-advance-breakdown-item">
-                                    <span class="claude-salary-advance-breakdown-label">Requested Amount</span>
-                                    <span class="claude-salary-advance-breakdown-value" id="claudeRequestedAmount">15,000</span>
-                                </div>
-                                <div class="claude-salary-advance-breakdown-item">
-                                    <span class="claude-salary-advance-breakdown-label">Processing Fee ℹ️</span>
-                                    <span class="claude-salary-advance-breakdown-value" id="claudeProcessingFee">-600</span>
-                                </div>
-                                <div class="claude-salary-advance-breakdown-item">
-                                    <span class="claude-salary-advance-breakdown-label">Withdrawal Amount</span>
-                                    <span class="claude-salary-advance-breakdown-value" id="claudeWithdrawalAmount">14,400</span>
-                                </div>
-                            </div>
-                    
-                            <div class="claude-salary-advance-withdrawal-section">
-                                <div class="claude-salary-advance-section-title">How do you want to withdraw?</div>
-                                <select class="claude-salary-advance-account-select">
-                                    <option>Select Account Type</option>
-                                    <option>M-Pesa</option>
-                                    <option>Bank Account</option>
-                                    <option>PesaPocket Wallet</option>
-                                </select>
-                                <div class="claude-salary-advance-terms-container">
-                                    <div class="claude-salary-advance-checkbox" id="claudeTermsCheckbox"></div>
-                                    <div class="claude-salary-advance-terms-text">
-                                        I have read and understood the <a href="#" class="claude-salary-advance-terms-link">'Terms & Conditions'</a>
-                                    </div>
-                                </div>
-                                <button class="claude-salary-advance-cta-button" id="claudeAdvanceButton" disabled>
-                                    Get Your Advance
-                                </button>
-                            </div>
-                    
-                            <div class="claude-salary-advance-bottom-nav">
-                                <div class="claude-salary-advance-nav-item">HOME</div>
-                                <div class="claude-salary-advance-nav-item active">ADVANCE</div>
-                            </div>
-                        </div>
-                        <!-- END: Claude.ai Salary Advance Mockup Integration -->
 
-                        <div class="text-center md:text-left max-w-md">
-                            <div class="inline-flex items-center bg-pesapocket-yellow text-pesapocket-black px-6 py-3 rounded-lg shadow-md mb-4">
-                                <i class="fas fa-money-bill-wave text-2xl mr-3"></i>
-                                <span class="text-lg font-medium">Salary Advances!</span>
+                                    <div class="gemini-form-group">
+                                        <label class="gemini-form-label">Select Advance Amount</label>
+                                        <div class="gemini-amount-display">KSh <span id="selectedAmount">5,000</span></div>
+                                        <div class="gemini-slider-container">
+                                            <input type="range" id="amountSlider" class="gemini-slider" min="1000" max="15750" value="5000" step="250">
+                                        </div>
+                                    </div>
+
+                                    <div class="gemini-fee-breakdown">
+                                        <div class="gemini-fee-row">
+                                            <span>Advance Amount:</span>
+                                            <span>KSh <span id="feeAmount">5,000</span></span>
+                                        </div>
+                                        <div class="gemini-fee-row">
+                                            <span>Processing Fee (3%):</span>
+                                            <span>KSh <span id="processingFee">150</span></span>
+                                        </div>
+                                        <div class="gemini-fee-row">
+                                            <span>Amount to Receive:</span>
+                                            <span>KSh <span id="netAmount">4,850</span></span>
+                                        </div>
+                                    </div>
+
+                                    <button class="gemini-btn-primary" id="requestAdvanceBtn">
+                                        Request Advance
+                                    </button>
+                                </div>
+
+                                <div class="gemini-success-state" id="successState">
+                                    <div class="gemini-success-icon">✓</div>
+                                    <div class="gemini-success-title">Request Approved!</div>
+                                    <div class="gemini-success-message">Your advance will be processed within 5 minutes. You'll receive a WhatsApp notification.</div>
+                                </div>
                             </div>
-                            <p class="text-gray-600 mt-2 mb-4">Access a portion of your earned salary before payday, directly through PesaPocket. Simple, transparent, and quick!</p>
-                             <p class="text-gray-600 font-semibold">Also Coming: Enhanced Payroll Solutions!</p>
-                            <p class="text-gray-600 mt-4">Join our waitlist to be the first to know when these powerful tools launch and help us build the future of SME financial management.</p>
+
+                            <!-- Overview Card -->
+                            <div class="gemini-card">
+                                <h3 class="gemini-card-title">Your Overview</h3>
+                                <div class="text-center md:text-left">
+                                    <div class="inline-flex items-center bg-pesapocket-yellow text-pesapocket-black px-6 py-3 rounded-lg shadow-md mb-4">
+                                        <i class="fas fa-money-bill-wave text-2xl mr-3"></i>
+                                        <span class="text-lg font-medium">Salary Advances!</span>
+                                    </div>
+                                    <p class="text-gray-600 mt-2 mb-4">Access a portion of your earned salary before payday, directly through PesaPocket. Simple, transparent, and quick!</p>
+                                    <p class="text-gray-600 font-semibold">Also Coming: Enhanced Payroll Solutions!</p>
+                                    <p class="text-gray-600 mt-4">Join our waitlist to be the first to know when these powerful tools launch and help us build the future of SME financial management.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -658,56 +710,38 @@
         </section>
 
         <!-- Enhanced WhatsApp Integration Section -->
-        <section class="py-16 md:py-24 bg-white">
+        <section id="whatsapp-interactive-section" class="py-16 md:py-24 bg-white">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
                      <div class="order-1 lg:order-2 text-center lg:text-left">
                         <h2 class="text-3xl md:text-4xl font-bold text-pesapocket-black mb-5">Your Business, Now on WhatsApp!</h2>
                         <p class="text-lg text-gray-600 mb-6">
-                            PesaPocket’s intelligent WhatsApp bot allows your field teams and deskless workers to interact with HR and finance systems effortlessly. Submit expense claims, check leave balances, or request petty cash directly from their phones – no app download needed!
+                            PesaPocket’s intelligent WhatsApp bot allows your field teams to interact with HR and finance systems effortlessly. Request salary advances, check leave balances, and more!
                         </p>
                         <ul class="space-y-3 text-gray-600 mb-8 text-left inline-block">
-                            <li class="flex items-center"><i class="fas fa-check-circle text-pesapocket-green mr-3 text-xl"></i> Instant access for deskless employees.</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-pesapocket-green mr-3 text-xl"></i> Simplified requests and approvals.</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-pesapocket-green mr-3 text-xl"></i> Reduced administrative burden.</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-pesapocket-green mr-3 text-xl"></i> No app download needed.</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-pesapocket-green mr-3 text-xl"></i> Request salary advances instantly</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-pesapocket-green mr-3 text-xl"></i> Check advance eligibility and limits</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-pesapocket-green mr-3 text-xl"></i> Get instant notifications and updates</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-pesapocket-green mr-3 text-xl"></i> Perfect for deskless workers</li>
                         </ul>
                         <div class="mt-6">
                              <a href="#waitlist" class="inline-block font-semibold px-7 py-3.5 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300 text-base salary-advance-action-button-main-page">Explore WhatsApp Bot</a>
                         </div>
                     </div>
                     <div class="order-2 lg:order-1 relative lg:pr-10">
-                         <!-- Detailed WhatsApp Business Chat Mockup from Claude.ai, adapted -->
-                        <div class="claude-whatsapp-section-mockup-frame" style="background-color: var(--whatsapp-header-bg-claude);"> 
-                            <div class="claude-whatsapp-section-mockup-header">
-                                <div class="avatar">P</div>
-                                <div>
-                                    <div class="bot-name">PesaPocket Bot</div>
-                                    <div class="account-type">Business Account</div>
-                                </div>
-                            </div>
-                            <div class="claude-whatsapp-section-mockup-messages" style="background-color: var(--whatsapp-bg-pattern-claude); padding:1rem; border-radius: 0 0 18px 18px;">
-                                <div class="message-card">
-                                    <div class="title">📄 <strong>Expense Submitted!</strong></div>
-                                    <div class="details">
-                                        Amount: KSh 850<br>
-                                        Category: Transport<br>
-                                        Status: <span class="font-semibold" style="color: var(--pesapocket-yellow);">Pending Approval</span>
+                        <div class="interactive-phone-mockup">
+                            <div class="interactive-phone-frame">
+                                <div class="interactive-phone-screen">
+                                    <div class="interactive-whatsapp-header">
+                                        <div class="interactive-bot-avatar">🤖</div>
+                                        <div class="interactive-bot-info">
+                                            <h4>PesaPocket Bot</h4>
+                                            <p>Online</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="message-card">
-                                    <div class="title">🏖️ <strong>Leave Approved!</strong></div>
-                                    <div class="details">
-                                        Dates: Dec 20-22<br>
-                                        Days: 3<br>
-                                        Balance: <span class="font-semibold" style="color: var(--pesapocket-green);">18 days remaining</span>
+                                    <div class="interactive-chat-area" id="interactiveChatArea">
+                                        <!-- Initial messages populated by JS -->
                                     </div>
-                                </div>
-                                <div class="claude-whatsapp-section-mockup-quick-actions">
-                                    <button>💰 Petty Cash</button>
-                                    <button>📊 Reports</button>
-                                    <button>🗓️ My Leave</button>
-                                    <button>ℹ️ Help</button>
                                 </div>
                             </div>
                         </div>
@@ -798,7 +832,7 @@
     </main>
 
     <!-- AI Explanation Modal -->
-    <div id="ai-explanation-modal" class="modal-overlay fixed inset-0 hidden opacity-0">
+    <div id="ai-explanation-modal" class="modal-overlay hidden opacity-0">
         <div class="modal-container bg-white p-6 rounded-lg shadow-xl max-w-lg w-11/12 md:w-full">
             <div class="flex justify-between items-center mb-4">
                 <h3 id="modal-title" class="text-xl font-semibold text-pesapocket-black">Feature Explanation</h3>
@@ -822,7 +856,7 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
                 <div>
-                    <img src="Pesa (2).png" alt="PesaPocket Logo" class="h-10 mb-4">
+                    <img src="Pesa (1).png" alt="PesaPocket Logo" class="h-10 mb-4">
                     <p class="text-sm">Simplifying Finance & HR for African SMEs.</p>
                 </div>
                 <div>
@@ -849,7 +883,7 @@
                         <a href="#" class="hover:text-pesapocket-yellow transition-colors" aria-label="LinkedIn"><i class="fab fa-linkedin-in text-lg"></i></a>
                         <a href="#" class="hover:text-pesapocket-yellow transition-colors" aria-label="Instagram"><i class="fab fa-instagram text-lg"></i></a>
                     </div>
-                     <p class="text-sm mt-4">Nairobi, Kenya.</p>
+                   <p class="text-sm mt-4">Nairobi, Kenya.</p>
                 </div>
             </div>
             <div class="border-t border-gray-700 pt-8 text-center md:text-left">
@@ -860,7 +894,21 @@
     </footer>
 
     <script>
-        // Navbar scroll effect
+        // --- Custom Message Box Logic ---
+        function showCustomMessage(message) {
+            const messageBox = document.getElementById('custom-message-box');
+            if (!messageBox) return;
+
+            messageBox.textContent = message;
+            messageBox.classList.add('show');
+
+            // Hide the message box after 4 seconds
+            setTimeout(() => {
+                messageBox.classList.remove('show');
+            }, 4000);
+        }
+
+        // --- Navbar scroll effect ---
         const navbar = document.getElementById('navbar');
         window.onscroll = function() {
             if (navbar) { 
@@ -874,7 +922,7 @@
             }
         };
 
-        // Mobile menu toggle
+        // --- Mobile menu toggle ---
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         if (mobileMenuButton && mobileMenu) {
@@ -883,7 +931,7 @@
             });
         }
 
-        // Smooth scroll for anchor links & close mobile menu
+        // --- Smooth scroll for anchor links & close mobile menu ---
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -900,7 +948,7 @@
             });
         });
 
-        // Set current year in footer
+        // --- Set current year in footer ---
         const currentYearEl = document.getElementById('current-year');
         if (currentYearEl) {
             currentYearEl.textContent = new Date().getFullYear();
@@ -962,7 +1010,7 @@
                 
                 let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
                 const payload = { contents: chatHistory };
-                const apiKey = ""; 
+                const apiKey = ""; // API Key is intentionally left blank
                 const apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + apiKey;
 
                 try {
@@ -996,10 +1044,12 @@
                     }
                 } catch (error) {
                     console.error('Error calling Gemini API:', error);
-                    let errorToDisplay = 'Sorry, an error occurred. Please try again later.';
+                    let errorToDisplay = 'Sorry, an error occurred. This feature requires a valid API key to be configured.';
                      if (error && error.message) {
                         console.error('Specific error detail for display consideration:', error.message);
-                        errorToDisplay = 'Sorry, an error occurred while trying to get the explanation.';
+                        if (error.message.includes("API key not valid")) {
+                           errorToDisplay = 'This AI feature is for demonstration only. A valid API key is needed for it to work.';
+                        }
                     }
                     if(modalExplanationText) modalExplanationText.textContent = errorToDisplay;
                 } finally {
@@ -1007,50 +1057,179 @@
                 }
             });
         });
+        
+        // --- Gemini Salary Advance Mockup JS ---
+        const slider = document.getElementById('amountSlider');
+        const selectedAmount = document.getElementById('selectedAmount');
+        const feeAmount = document.getElementById('feeAmount');
+        const processingFee = document.getElementById('processingFee');
+        const netAmount = document.getElementById('netAmount');
 
-        // --- Claude.ai Salary Advance Mockup JS ---
-        const claudeSlider = document.getElementById('claudeAmountSlider');
-        const claudeSelectedAmount = document.getElementById('claudeSelectedAmount');
-        const claudeRequestedAmount = document.getElementById('claudeRequestedAmount');
-        const claudeWithdrawalAmount = document.getElementById('claudeWithdrawalAmount');
-        const claudeProgressBar = document.getElementById('claudeProgressBar');
-        const claudeTermsCheckbox = document.getElementById('claudeTermsCheckbox');
-        const claudeAdvanceButton = document.getElementById('claudeAdvanceButton');
-        const claudeProcessingFeeEl = document.getElementById('claudeProcessingFee');
+        if (slider) {
+            slider.addEventListener('input', function() {
+                const amount = parseInt(this.value);
+                const fee = Math.round(amount * 0.03);
+                const net = amount - fee;
 
+                selectedAmount.textContent = amount.toLocaleString();
+                feeAmount.textContent = amount.toLocaleString();
+                processingFee.textContent = fee.toLocaleString();
+                netAmount.textContent = net.toLocaleString();
+            });
+            // Trigger on load
+            slider.dispatchEvent(new Event('input'));
+        }
 
-        if (claudeSlider && claudeSelectedAmount && claudeRequestedAmount && claudeWithdrawalAmount && claudeProgressBar && claudeProcessingFeeEl) {
-            claudeSlider.addEventListener('input', function() {
-                const value = parseInt(this.value);
-                const max = parseInt(this.max);
-                const percentage = (value / max) * 100;
-                // Simplified processing fee calculation for the mockup
-                const processingFee = Math.max(0, Math.round(value * 0.02)); // Example: 2% fee, ensure non-negative
-                const finalAmount = value - processingFee;
+        const requestAdvanceBtn = document.getElementById('requestAdvanceBtn');
+        if(requestAdvanceBtn) {
+            requestAdvanceBtn.addEventListener('click', function() {
+                const form = document.getElementById('gemini-request-form');
+                const successState = document.getElementById('successState');
                 
-                claudeSelectedAmount.textContent = value.toLocaleString();
-                claudeRequestedAmount.textContent = value.toLocaleString();
-                claudeProcessingFeeEl.textContent = '-' + processingFee.toLocaleString();
-                claudeWithdrawalAmount.textContent = finalAmount.toLocaleString();
-                claudeProgressBar.style.width = percentage + '%';
+                // Show loading state
+                this.textContent = 'Processing Request...';
+                this.disabled = true;
+                this.style.opacity = '0.7';
+
+                // Simulate processing time
+                setTimeout(() => {
+                    form.style.display = 'none';
+                    successState.style.display = 'block';
+
+                    // Reset after 4 seconds
+                    setTimeout(() => {
+                        successState.style.display = 'none';
+                        form.style.display = 'block';
+                        this.textContent = 'Request Advance';
+                        this.disabled = false;
+                        this.style.opacity = '1';
+                    }, 4000);
+                }, 2000);
             });
+        }
+        // --- End of Gemini Salary Advance Mockup JS ---
+        
+        // --- Interactive WhatsApp Demo JS (Functions for both mockups) ---
+        function addInteractiveMessage(chatArea, type, text, quickReplies = []) {
+            const messageEl = document.createElement('div');
+            messageEl.className = `interactive-message ${type}`;
+            
+            let messageHTML = text;
+            if (quickReplies.length > 0) {
+                messageHTML += `<div class="interactive-quick-replies">`;
+                quickReplies.forEach(reply => {
+                    messageHTML += `<div class="interactive-quick-reply" onclick="${reply.action}">${reply.text}</div>`;
+                });
+                messageHTML += `</div>`;
+            }
+            messageHTML += `<div class="interactive-message-time">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>`;
+
+            messageEl.innerHTML = messageHTML;
+            chatArea.appendChild(messageEl);
+            chatArea.scrollTop = chatArea.scrollHeight;
         }
 
-        if (claudeTermsCheckbox && claudeAdvanceButton) {
-            claudeTermsCheckbox.addEventListener('click', function() {
-                this.classList.toggle('checked');
-                claudeAdvanceButton.disabled = !this.classList.contains('checked');
-            });
+        function addTypingIndicator(chatArea) {
+            const typingEl = document.createElement('div');
+            typingEl.className = 'interactive-typing-indicator';
+            typingEl.innerHTML = `<div class="interactive-typing-dots"><div class="interactive-typing-dot"></div><div class="interactive-typing-dot"></div><div class="interactive-typing-dot"></div></div>`;
+            chatArea.appendChild(typingEl);
+            chatArea.scrollTop = chatArea.scrollHeight;
+            return typingEl;
         }
 
-        if (claudeAdvanceButton) {
-            claudeAdvanceButton.addEventListener('click', function() {
-                alert('Thank you for your interest! Join our waitlist to be the first to access the Salary Advance feature when PesaPocket launches.');
-            });
+        // --- Logic for Hero WhatsApp Mockup ---
+        const heroChatArea = document.getElementById('heroChatArea');
+        function hero_checkPettyCash() {
+            addInteractiveMessage(heroChatArea, 'user', 'Check petty cash balance');
+            const typing = addTypingIndicator(heroChatArea);
+            setTimeout(() => {
+                typing.remove();
+                addInteractiveMessage(heroChatArea, 'bot', '💰 Your petty cash balance is KSh 1,250.');
+            }, 1500);
         }
-        // --- End of Claude.ai Salary Advance Mockup JS ---
+
+        function hero_submitExpense() {
+             addInteractiveMessage(heroChatArea, 'user', 'Submit expense report');
+            const typing = addTypingIndicator(heroChatArea);
+            setTimeout(() => {
+                typing.remove();
+                addInteractiveMessage(heroChatArea, 'bot', 'Okay, please upload a photo of your receipt.');
+            }, 1500);
+        }
+
+        function hero_requestLeave() {
+             addInteractiveMessage(heroChatArea, 'user', 'Request leave');
+            const typing = addTypingIndicator(heroChatArea);
+            setTimeout(() => {
+                typing.remove();
+                addInteractiveMessage(heroChatArea, 'bot', 'Sure, what dates are you requesting off?');
+            }, 1500);
+        }
+        
+        // Initialize Hero Chat
+        if(heroChatArea) {
+            addInteractiveMessage(heroChatArea, 'bot', 'Welcome to PesaPocket! I\'m here to help you with:', [
+                { text: '💰 Check petty cash balance', action: 'hero_checkPettyCash()' },
+                { text: '📄 Submit expense report', action: 'hero_submitExpense()' },
+                { text: '🏖️ Request leave', action: 'hero_requestLeave()' }
+            ]);
+        }
+
+
+        // --- Logic for Main WhatsApp Demo ---
+        const interactiveChatArea = document.getElementById('interactiveChatArea');
+
+        function startSalaryAdvance() {
+            addInteractiveMessage(interactiveChatArea, 'user', 'Request Salary Advance');
+            const typing = addTypingIndicator(interactiveChatArea);
+            setTimeout(() => {
+                typing.remove();
+                addInteractiveMessage(interactiveChatArea, 'bot', 'Great news! You are eligible for an advance of up to KSh 15,750. How much would you like?', [
+                    { text: 'KSh 5,000', action: 'selectAdvance(5000)' },
+                    { text: 'KSh 10,000', action: 'selectAdvance(10000)' },
+                    { text: 'Other Amount', action: 'selectAdvance(0)' }
+                ]);
+            }, 1500);
+        }
+
+        function showPettyCash() {
+             addInteractiveMessage(interactiveChatArea, 'user', 'Check Petty Cash');
+            const typing = addTypingIndicator(interactiveChatArea);
+            setTimeout(() => {
+                typing.remove();
+                addInteractiveMessage(interactiveChatArea, 'bot', 'Your current petty cash balance is KSh 1,250.');
+            }, 1500);
+        }
+
+        function selectAdvance(amount) {
+            if (amount > 0) {
+                addInteractiveMessage(interactiveChatArea, 'user', `KSh ${amount.toLocaleString()}`);
+                const typing = addTypingIndicator(interactiveChatArea);
+                 setTimeout(() => {
+                    typing.remove();
+                    const fee = Math.round(amount * 0.03);
+                    const net = amount - fee;
+                    addInteractiveMessage(interactiveChatArea, 'bot', `Your advance of KSh ${amount.toLocaleString()} is approved! You'll receive KSh ${net.toLocaleString()} after a KSh ${fee.toLocaleString()} fee. Funds will be sent within 5 minutes. 🎉`);
+                }, 2000);
+            } else {
+                addInteractiveMessage(interactiveChatArea, 'user', 'Other Amount');
+                const typing = addTypingIndicator(interactiveChatArea);
+                setTimeout(() => {
+                    typing.remove();
+                    addInteractiveMessage(interactiveChatArea, 'bot', 'Okay, please type the amount you need.');
+                }, 1500);
+            }
+        }
+        
+        // Initialize Main Demo Chat
+        if(interactiveChatArea) {
+             addInteractiveMessage(interactiveChatArea, 'bot', 'Hi! I\'m your PesaPocket assistant. How can I help you today?', [
+                { text: 'Request Salary Advance', action: 'startSalaryAdvance()' },
+                { text: 'Check Petty Cash', action: 'showPettyCash()' }
+             ]);
+        }
 
     </script>
 </body>
 </html>
- 
