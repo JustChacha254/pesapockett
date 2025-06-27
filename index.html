@@ -71,6 +71,15 @@
             @apply text-pesapocket-black; 
         }
 
+        /* NEW BUTTON STYLE FOR DASHBOARD LOGIN */
+        .dashboard-login-button {
+             background-color: #ef4444; /* A neutral but distinct red */
+             @apply text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300;
+        }
+        .dashboard-login-button:hover {
+            background-color: #dc2626; /* Darker red on hover */
+        }
+        
         .btn-ai-explain {
              @apply mt-4 text-sm text-pesapocket-green font-medium hover:text-pesapocket-yellow transition-colors duration-200 py-1;
         }
@@ -86,7 +95,7 @@
             @apply bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col;
         }
         .feature-item-card .icon-container {
-             @apply w-12 h-12 rounded-lg bg-pesapocket-green bg-opacity-10 flex items-center justify-center mb-4;
+            @apply w-12 h-12 rounded-lg bg-pesapocket-green bg-opacity-10 flex items-center justify-center mb-4;
         }
          .feature-item-card .icon-container i {
             @apply text-2xl text-pesapocket-green;
@@ -99,7 +108,7 @@
             @apply sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm transition-all duration-300;
         }
         .navbar-transparent {
-             @apply sticky top-0 z-50 bg-transparent transition-all duration-300;
+            @apply sticky top-0 z-50 bg-transparent transition-all duration-300;
         }
 
         /* Modal Styles */
@@ -511,8 +520,10 @@
                     <a href="#how-it-works" class="nav-link">How It Works</a>
                     <a href="#testimonials" class="nav-link">Testimonials</a>
                 </div>
+                <!-- UPDATED BUTTONS CONTAINER -->
                 <div class="hidden lg:flex items-center space-x-4">
                     <a href="#waitlist" class="pesapocket-gradient-button text-sm font-semibold px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300">Join Waitlist</a>
+                    <a href="/dashboard" class="dashboard-login-button">Dashboard Login</a>
                 </div>
                 <div class="lg:hidden">
                     <button id="mobile-menu-button" class="text-gray-700 hover:text-pesapocket-green focus:outline-none" aria-label="Open mobile menu">
@@ -521,7 +532,7 @@
                 </div>
             </div>
         </div>
-        <!-- Mobile Menu -->
+        <!-- UPDATED Mobile Menu -->
         <div id="mobile-menu" class="hidden lg:hidden bg-white shadow-lg absolute w-full">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="#features" class="block nav-link px-3 py-2 rounded-md text-base">Features</a>
@@ -529,8 +540,11 @@
                 <a href="#testimonials" class="block nav-link px-3 py-2 rounded-md text-base">Testimonials</a>
             </div>
             <div class="pt-4 pb-3 border-t border-gray-200">
+                <div class="px-5 mb-3">
+                   <a href="#waitlist" class="block w-full text-center pesapocket-gradient-button font-semibold px-5 py-3 rounded-full shadow-lg text-base">Join Waitlist</a>
+                </div>
                 <div class="px-5">
-                   <a href="#waitlist" class="block w-full text-center pesapocket-gradient-button font-semibold px-7 py-3.5 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300 text-base">Join Waitlist</a>
+                   <a href="/dashboard" class="block w-full text-center dashboard-login-button font-semibold px-5 py-3 rounded-full text-base">Dashboard Login</a>
                 </div>
             </div>
         </div>
@@ -713,21 +727,21 @@
         <section id="whatsapp-interactive-section" class="py-16 md:py-24 bg-white">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
-                     <div class="order-1 lg:order-2 text-center lg:text-left">
-                        <h2 class="text-3xl md:text-4xl font-bold text-pesapocket-black mb-5">Your Business, Now on WhatsApp!</h2>
-                        <p class="text-lg text-gray-600 mb-6">
-                            PesaPocket’s intelligent WhatsApp bot allows your field teams to interact with HR and finance systems effortlessly. Request salary advances, check leave balances, and more!
-                        </p>
-                        <ul class="space-y-3 text-gray-600 mb-8 text-left inline-block">
-                            <li class="flex items-center"><i class="fas fa-check-circle text-pesapocket-green mr-3 text-xl"></i> Request salary advances instantly</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-pesapocket-green mr-3 text-xl"></i> Check advance eligibility and limits</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-pesapocket-green mr-3 text-xl"></i> Get instant notifications and updates</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-pesapocket-green mr-3 text-xl"></i> Perfect for deskless workers</li>
-                        </ul>
-                        <div class="mt-6">
-                             <a href="#waitlist" class="inline-block font-semibold px-7 py-3.5 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300 text-base salary-advance-action-button-main-page">Explore WhatsApp Bot</a>
+                        <div class="order-1 lg:order-2 text-center lg:text-left">
+                            <h2 class="text-3xl md:text-4xl font-bold text-pesapocket-black mb-5">Your Business, Now on WhatsApp!</h2>
+                            <p class="text-lg text-gray-600 mb-6">
+                                PesaPocket’s intelligent WhatsApp bot allows your field teams to interact with HR and finance systems effortlessly. Request salary advances, check leave balances, and more!
+                            </p>
+                            <ul class="space-y-3 text-gray-600 mb-8 text-left inline-block">
+                                <li class="flex items-center"><i class="fas fa-check-circle text-pesapocket-green mr-3 text-xl"></i> Request salary advances instantly</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-pesapocket-green mr-3 text-xl"></i> Check advance eligibility and limits</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-pesapocket-green mr-3 text-xl"></i> Get instant notifications and updates</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-pesapocket-green mr-3 text-xl"></i> Perfect for deskless workers</li>
+                            </ul>
+                            <div class="mt-6">
+                                 <a href="#waitlist" class="inline-block font-semibold px-7 py-3.5 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300 text-base salary-advance-action-button-main-page">Explore WhatsApp Bot</a>
+                            </div>
                         </div>
-                    </div>
                     <div class="order-2 lg:order-1 relative lg:pr-10">
                         <div class="interactive-phone-mockup">
                             <div class="interactive-phone-frame">
