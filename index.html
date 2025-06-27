@@ -71,13 +71,17 @@
             @apply text-pesapocket-black; 
         }
 
-        /* NEW BUTTON STYLE FOR DASHBOARD LOGIN */
-        .dashboard-login-button {
-             background-color: #ef4444; /* A neutral but distinct red */
-             @apply text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300;
+        /* NEW GLASSMORPHISM BUTTON STYLE */
+        .dashboard-glass-button {
+            background: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+            backdrop-filter: blur(10px); /* The blur effect */
+            -webkit-backdrop-filter: blur(10px); /* For Safari */
+            border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border */
+            @apply text-white text-sm font-semibold px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300;
         }
-        .dashboard-login-button:hover {
-            background-color: #dc2626; /* Darker red on hover */
+
+        .dashboard-glass-button:hover {
+             background: rgba(255, 255, 255, 0.3);
         }
         
         .btn-ai-explain {
@@ -523,7 +527,7 @@
                 <!-- UPDATED BUTTONS CONTAINER -->
                 <div class="hidden lg:flex items-center space-x-4">
                     <a href="#waitlist" class="pesapocket-gradient-button text-sm font-semibold px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300">Join Waitlist</a>
-                    <a href="/dashboard" class="dashboard-login-button">Dashboard Login</a>
+                    <a href="/dashboard/index.html" class="dashboard-glass-button">Dashboard Login</a>
                 </div>
                 <div class="lg:hidden">
                     <button id="mobile-menu-button" class="text-gray-700 hover:text-pesapocket-green focus:outline-none" aria-label="Open mobile menu">
@@ -544,7 +548,7 @@
                    <a href="#waitlist" class="block w-full text-center pesapocket-gradient-button font-semibold px-5 py-3 rounded-full shadow-lg text-base">Join Waitlist</a>
                 </div>
                 <div class="px-5">
-                   <a href="/dashboard" class="block w-full text-center dashboard-login-button font-semibold px-5 py-3 rounded-full text-base">Dashboard Login</a>
+                   <a href="/dashboard/index.html" class="block w-full text-center dashboard-glass-button font-semibold px-5 py-3 rounded-lg text-base">Dashboard Login</a>
                 </div>
             </div>
         </div>
